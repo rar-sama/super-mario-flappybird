@@ -79,8 +79,8 @@ export default class Level extends Scene{
       this.coins = this.physics.add.group({classType: Coin});
 
       //Collider
-      this.physics.add.collider(this.player, this.pipeUp);
-      this.physics.add.collider(this.player, this.pipeDown);
+      this.physics.add.collider(this.player, this.pipeUp, () => {this.scene.start('game-over'); this.sound.play('game-over')});
+      this.physics.add.collider(this.player, this.pipeDown, () => {this.scene.start('game-over'); this.sound.play('game-over')});
       this.physics.add.collider(this.coins, this.platforms);
 
       //Coins collected
